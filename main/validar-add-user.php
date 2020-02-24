@@ -75,32 +75,4 @@ if (isset($_POST['enviar'])) {
 
     }; //fim da validação 1
 
- // if (!empty($nome) && !empty($email) && !empty($senha) && !empty($confsenha)) {
-    
-    // if((count($userErr)==0) && (isset($_POST['enviar']))){
-    //     // $user = [
-    //     //   "nome" => $nome,
-    //     //   "email" => $email,
-    //     //   "senha" => $senha,
-    //     // ];
-        
-    //     $cadastro = file_get_contents("../json/cadastro.json");
-    //     $temp = json_decode($cadastro, true);
-
-    //     $user = [
-    //         'id' => microtime(true) * 1000000,
-    //         'nome' => $nome,
-    //         'email' => $email,
-    //         'senha' => password_hash($senha,PASSWORD_DEFAULT)
-    //     ];
-
-    //     $temp[] = $user;
-    //     $inserirUserJson = json_encode($temp,JSON_PRETTY_PRINT);
-    //     file_put_contents("../json/cadastro.json", $inserirUserJson);
-        
-    //     header ('Location:home.php');
-    //   } else{
-    //     echo ":(";
-    //   };
-//fim da validação
   };

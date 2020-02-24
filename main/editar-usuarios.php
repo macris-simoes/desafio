@@ -1,10 +1,15 @@
 <?php
 session_start();
 
-print_r($_POST);
 print_r($_SESSION);
 
-require 'validar-add-user.php';
+//personalização de página
+$cadastro = file_get_contents("../json/cadastro.json");
+$tempSession = json_decode($cadastro, true);
+$_SESSION['nome'] = $tempSession[0]['nome'];
+
+
+require ('validar-add-user.php');
 
 $cadastro = file_get_contents("../json/cadastro.json");
 $tempeditar = json_decode($cadastro, true);
