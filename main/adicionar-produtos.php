@@ -2,10 +2,7 @@
 session_start();
 print_r($_SESSION);
 
-//personalização de página
-$cadastro = file_get_contents("../json/cadastro.json");
-$tempSession = json_decode($cadastro, true);
-$_SESSION['nome'] = $tempSession[0]['nome'];
+
 
 ?>
 <!DOCTYPE html>

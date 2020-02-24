@@ -1,15 +1,10 @@
 <?php
 session_start();
+require '../includes/userSession.php';
 
 print_r($_SESSION);
 
-//personalização de página
-$cadastro = file_get_contents("../json/cadastro.json");
-$tempSession = json_decode($cadastro, true);
-$_SESSION['nome'] = $tempSession[0]['nome'];
-
-
-require ('validar-add-user.php');
+// require ('validar-add-user.php');
 
 ?>
 
@@ -20,6 +15,7 @@ require ('validar-add-user.php');
 <body>
     <?php require('../includes/navbar.php'); ?>
 <!-- início divona -->
+<h1>Olá <?php echo $_SESSION['nome'] . "!<br><br>" ?></h1>
 <div class="container mt-2">
     <h3>Lista de produtos</h3>
 <table class="table">

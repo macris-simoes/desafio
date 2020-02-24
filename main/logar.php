@@ -28,9 +28,8 @@ if (isset($_POST["enviar"])) {
       $senhaErr = "Ixi manx, sei não, confere a senha aí";
 
       //se o e-mail está no JSON e a senha tá certa
-      if ($senhaCheck == true) {   
+      if ($senhaCheck == true) {
          $_SESSION = $_POST;
-         $_SESSION['enviar'] = "ok";  
          header('location:home.php');
       } else {
          $emailErr = "O e-mail tava certo, mas a senha não";
@@ -57,7 +56,8 @@ if (isset($_POST["enviar"])) {
             <div class="form-group">
                <label for="formGroupExampleInput2">E-mail</label>
                <span class="small error text-danger">* <?php echo $emailErr; ?></span>
-               <input type="text" class="form-control" id="formGroupExampleInput2" name="email" <?php if (isset($_POST['email'])) { ?> value="<?php echo $_POST['email'];} ?>">
+               <input type="text" class="form-control" id="formGroupExampleInput2" name="email" <?php if (isset($_POST['email'])) { ?> value="<?php echo $_POST['email'];
+                                                                                                                                             } ?>">
             </div>
             <div class="form-group">
                <label for="formGroupExampleInput3">Senha</label>

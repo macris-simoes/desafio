@@ -3,10 +3,6 @@ session_start();
 
 print_r($_SESSION);
 
-//personalização de página
-$cadastro = file_get_contents("../json/cadastro.json");
-$tempSession = json_decode($cadastro, true);
-$_SESSION['nome'] = $tempSession[0]['nome'];
 
 
 require ('validar-add-user.php');
@@ -20,7 +16,7 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
 
 
     $user = [
-        'id' => microtime(true) * 1000000,
+        'id' => microtime(true),
         'nome' => $nome,
         'email' => $email,
         'senha' => password_hash($senha, PASSWORD_DEFAULT),
@@ -29,6 +25,12 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     $temp[] = $user;
     $inserirUserJson = json_encode($temp, JSON_PRETTY_PRINT);
     file_put_contents("../json/cadastro.json", $inserirUserJson);
+
+
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['nome'] = $_POST['nome'];
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['enviar'] = "ok";
 
     header('Location:home.php');
 } else {
