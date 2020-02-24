@@ -16,7 +16,7 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
 
 
     $user = [
-        'id' => microtime(true),
+        'id' => microtime(true)*1000000,
         'nome' => $nome,
         'email' => $email,
         'senha' => password_hash($senha, PASSWORD_DEFAULT),
@@ -25,13 +25,10 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     $temp[] = $user;
     $inserirUserJson = json_encode($temp, JSON_PRETTY_PRINT);
     file_put_contents("../json/cadastro.json", $inserirUserJson);
-
-
+    
     $_SESSION['id'] = $user['id'];
     $_SESSION['nome'] = $_POST['nome'];
     $_SESSION['email'] = $_POST['email'];
-    $_SESSION['enviar'] = "ok";
-
     header('Location:home.php');
 } else {
     echo ":(";

@@ -13,8 +13,10 @@ print_r($_SESSION);
 <body>
     <?php require('../includes/navbar.php'); ?>
 <!-- início divona -->
-<h1>Olá <?php echo $_SESSION['nome'] . "!<br><br>" ?></h1>
+
+
 <div class="container mt-2">
+    <h1>Olá <?php echo $_SESSION['nome'] . "!<br>" ?></h1>
     <h3>Lista de produtos</h3>
 <table class="table">
     <thead class="thead-light">
