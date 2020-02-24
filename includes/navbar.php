@@ -1,19 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-<?php
-// if(isset($_SESSION)){
-//   $log = "#";
-// } else{
-//   $log = "logar.php";
-// }
-// ?>
-// <?php //echo $log ?>
-
-<a class="navbar-brand" href="logar.php"> Desafio PHP da macris</a>
+  <a class="navbar-brand" href="logar.php"> Desafio PHP da macris</a>
 
 <?php 
-  if (isset($_SESSION)){ ?>
-  
+  if (!empty($_SESSION)){ ?>
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -41,7 +31,7 @@
   </div>
    
     <div>
-      <a class="btn btn-light" name="sair" href="#"> Me tira daqui!</a>
+      <a class="btn btn-light" name="sair" href="sair.php"> Me tira daqui!</a>
     </div>
   <?php }; ?>
 
