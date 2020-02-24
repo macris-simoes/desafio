@@ -4,8 +4,6 @@ require '../includes/userSession.php';
 
 print_r($_SESSION);
 
-// require ('validar-add-user.php');
-
 ?>
 
 <!DOCTYPE html>
