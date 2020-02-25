@@ -1,11 +1,5 @@
 <?php
 session_start();
-
-
-print_r($_POST);
-print_r($_SESSION);
-
-
 require 'validar-add-user.php';
 
 $cadastro = file_get_contents("../json/cadastro.json");
@@ -29,7 +23,7 @@ if (isset($_POST["enviar"])) {
 
       //se o e-mail está no JSON e a senha tá certa
       if ($senhaCheck == true) {
-         $_SESSION = $_POST;
+         $_SESSION['user'] = $_POST;
          header('location:home.php');
       } else {
          $emailErr = "O e-mail tava certo, mas a senha não";

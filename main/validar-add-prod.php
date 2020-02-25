@@ -81,5 +81,5 @@ if (!empty($nomeprod && $precoprod)) {
 };
 
 
-print_r($tempProd);
+
 ?>

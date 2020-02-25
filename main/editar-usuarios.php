@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+session_name('$user');
 print_r($_SESSION);
 
 

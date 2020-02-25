@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+
+  <a class="navbar-brand" href="#"> Desafio PHP da macris</a>
   <?php
+
   if (empty($_SESSION)) { ?>
-    <a class="navbar-brand" href="logar.php"> Desafio PHP da macris</a>
 
   <?php
   } else { ?>
 
-    <a class="navbar-brand" href="#"> //Desafio PHP da macris</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -14,6 +15,7 @@
         <li class="nav-item">
           <a class="nav-link" href="home.php">Home</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="adicionar-produtos.php">Adicionar produtos</a>
         </li>
@@ -36,6 +38,8 @@
     <div>
       <a class="btn btn-light" name="sair" href="sair.php"> Me tira daqui!</a>
     </div>
-  <?php }; ?>
+
+  <?php };
+  ?>
 
 </nav>
