@@ -25,7 +25,6 @@ if (isset($_POST['enviar'])) {
     if (!preg_match("/^[a-zA-Z ]+$/", $nome)) {
       $nomeErr = "Apenas letras e espaços";
       array_push($userErr,1);
-
     } else {
       $nome = $_POST['nome'];
     };

@@ -5,13 +5,6 @@ $nomeprod = $precoprod = $descprod = $imgprod = "";
 $nomeprodErr = $precoprodErr = $descprodErr = $imgprodErr = "";
 $prodErr = [];
 
-// $produto = [
-//   "nomeprod" => "",
-//   "precoprod" => "",
-//   "descprod" => "",
-//   "imgprod" => "",
-// ];
-
 
 //função anti-hacker
 function test_input($data){
@@ -21,8 +14,7 @@ function test_input($data){
   return $data;
 }
 
-
-//validação 1
+//validação
 if (isset($_POST['enviarProd'])) {
   //nomeprod
   if (empty($_POST["nomeprod"])) {
@@ -33,7 +25,6 @@ if (isset($_POST['enviarProd'])) {
       $nomeprodErr = "não utilizar caracteres especais";
       array_push($prodErr,1);
     } else {
-      // $produto["nomeprod"]
       $nomeprod = $_POST['nomeprod'];
     };
   };
@@ -44,7 +35,7 @@ if (isset($_POST['enviarProd'])) {
     $precoprodErr = "Preço é obrigatório";
   } else {
     $precoprod = test_input($_POST['precoprod']);
-    if (!preg_match('^[0-9]+$^', $precoprod)) {
+    if (!preg_match('^[0-9.]+$^', $precoprod)) {
       $precoprodErr = "SÓ NÚMERO E PONTO";
     } else {
       // $user["precoProd"] 
@@ -53,30 +44,9 @@ if (isset($_POST['enviarProd'])) {
   };
   //fim preço
 
+} //fim da validação
 
 
-}; //fim da IF SERVER
-
-
-
-
-if (!empty($nomeprod && $precoprod)) {
-  $prod = [
-    "idprod" => count($tempProd)+1,
-    "nomeprod" => $nomeprod,
-    "precoprod" => $precoprod,
-    "descprod" => $descprod,
-    "imgprod" => $imgprod,
-  ];
-
-  $produtos = file_get_contents("../json/produtos.json");
-  $tempProd = json_decode($produtos, true);
-  $tempProd[] = $prod;
-  $inserirProdJson = json_encode($tempProd, JSON_PRETTY_PRINT);
-  file_put_contents("../json/produtos.json", $inserirProdJson);
-
-  
-};
 
 
 

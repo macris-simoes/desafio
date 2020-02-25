@@ -1,15 +1,14 @@
 <?php
 session_start();
-
 print_r($_SESSION);
-print_r($_POST);
-
-
+// print_r($_POST);
 
 require ('validar-add-user.php');
 
 
 if ((count($userErr) == 0) && isset($_POST['enviar'])) {
+
+    if(!empty($_POST['nome'])){
     $cadastro = file_get_contents("../json/cadastro.json");
     $temp = json_decode($cadastro, true);
 
@@ -30,7 +29,7 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     require ('../includes/userSession.php');
     header ('location: home.php');
     
-
+    }
    
 } else {
     echo ":(";
@@ -93,3 +92,22 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
 </body>
 
 </html>
+
+
+<!-- if (!empty($nomeprod && $precoprod)) {
+  $prod = [
+    "idprod" => count($tempProd)+1,
+    "nomeprod" => $nomeprod,
+    "precoprod" => $precoprod,
+    "descprod" => $descprod,
+    "imgprod" => $imgprod,
+  ];
+
+  $produtos = file_get_contents("../json/produtos.json");
+  $tempProd = json_decode($produtos, true);
+  $tempProd[] = $prod;
+  $inserirProdJson = json_encode($tempProd, JSON_PRETTY_PRINT);
+  file_put_contents("../json/produtos.json", $inserirProdJson);
+
+  
+}; -->

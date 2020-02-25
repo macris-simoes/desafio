@@ -4,6 +4,34 @@ print_r($_SESSION);
 
 
 
+require ('validar-add-prod.php');
+
+if ((count($prodErr) == 0) && isset($_POST['enviarProd'])){
+
+    if(!empty($_POST['nomeprod'])){
+
+    
+    $produto = file_get_contents("../json/produtos.json");
+    $tempProd = json_decode($produto,true);
+    
+    $prod = [
+        "id" => $_SESSION['user']['id'],
+        "idprod" => microtime(false),
+        "nomeprod" => $nomeprod,
+        "precoprod" => $precoprod,
+        "descprod" => $descprod,
+        "imgprod" => $imgprod,
+      ];
+    $tempProd[] = $prod;
+    $inserirProdJson = json_encode($tempProd,JSON_PRETTY_PRINT);
+    file_put_contents("../json/produtos.json", $inserirProdJson);
+
+    unset($_POST['enviarProd']);
+    } 
+    
+} else{ echo "carai tipsy";}
+
+print_r($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +39,7 @@ print_r($_SESSION);
 
 <body>
     <?php require('../includes/navbar.php'); ?>
-    <?php require('validar-add-prod.php'); ?>
+
 
     <!-- início divona -->
     <div class="container mt-2">
@@ -23,28 +51,25 @@ print_r($_SESSION);
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="nome">Nome</label>
-                    <input type="text" class=form-control id="nomeprod">
+                    <span class="small error text-danger">* <?php echo $nomeprodErr; ?></span>
+                    <input type="text" class=form-control name="nomeprod">
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="nome">Preço</label>
-                    <input type="text" class=form-control id="precoprod">
+                    <span class="small error text-danger">* <?php echo $precoprodErr; ?></span>
+                    <input type="text" class=form-control name="precoprod">
                 </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descrição</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" class="descprod"></textarea>
+                <textarea class="form-control" rows="3" name="descprod"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Adicionar imagem </label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgprod">
+                <input type="file" class="form-control-file" name="imgprod">
             </div <div class="form-group">
             <button type="submit" class="btn btn-sm btn-block btn-outline-danger" name="enviarProd"> Enviar </button>
         </form>
-
-
-
-
-
         <!-- fim divona -->
     </div>
 
