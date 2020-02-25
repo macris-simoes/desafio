@@ -1,20 +1,8 @@
 [
     {
-        "id": 1582507725710835,
+        "id": 1582651365605368,
         "nome": "admin",
         "email": "admin@admin.com",
-        "senha": "$2y$10$RjZ4fMdLUzblrjO9p.7aQO7kf7EPuz3JEHhB6J9y4haB8UaHCbMZ."
-    },
-    {
-        "id": 1582507846418902,
-        "nome": "MARIA CRISTINA DANCHAM SIMOES",
-        "email": "mcris_simoes@hotmail.com",
-        "senha": "$2y$10$jC6MxOuuCZkfLAM9M33YbO3u5K\/CKYEtL6Raq7auVsOwPljOfEalC"
-    },
-    {
-        "id": 1582507908539552,
-        "nome": "fulano",
-        "email": "f@f.com",
-        "senha": "$2y$10$oLGKCuMmudVhVSscqqaLvOl0tMRLEAA69kOuFBRECrtRvouGJQLkq"
+        "senha": "$2y$10$Wyrw397vF.0S9p2uWs0Jm.3umCpJ3qrFvWqFX4HROX1MGXXwz1z1G"
     }
 ]

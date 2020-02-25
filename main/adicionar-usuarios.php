@@ -2,6 +2,7 @@
 session_start();
 
 print_r($_SESSION);
+print_r($_POST);
 
 
 
@@ -26,16 +27,20 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     $inserirUserJson = json_encode($temp, JSON_PRETTY_PRINT);
     file_put_contents("../json/cadastro.json", $inserirUserJson);
     
-    $_SESSION['id'] = $user['id'];
-    $_SESSION['nome'] = $_POST['nome'];
-    $_SESSION['email'] = $_POST['email'];
-    header('Location:home.php');
+    require ('../includes/userSession.php');
+    header ('location: home.php');
+    
+
+   
 } else {
     echo ":(";
-};
+
 
 ?>
+<?php }; 
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

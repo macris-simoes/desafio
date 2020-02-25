@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 print_r($_SESSION);
 
 
@@ -39,7 +38,7 @@ print_r($_SESSION);
                 <label for="exampleFormControlFile1">Adicionar imagem </label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgprod">
             </div <div class="form-group">
-            <button type="button" class="btn btn-sm btn-block btn-outline-danger"> Enviar </button>
+            <button type="submit" class="btn btn-sm btn-block btn-outline-danger" name="enviarProd"> Enviar </button>
         </form>
 
 

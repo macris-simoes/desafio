@@ -1,22 +1,20 @@
 <?php
 
 // definição de variáveis
-
 $nomeprod = $precoprod = $descprod = $imgprod = "";
 $nomeprodErr = $precoprodErr = $descprodErr = $imgprodErr = "";
-
-$produto = [
-  "nomeprod" => "",
-  "precoprod" => "",
-  "descprod" => "",
-  "imgprod" => "",
-];
-
 $prodErr = [];
 
+// $produto = [
+//   "nomeprod" => "",
+//   "precoprod" => "",
+//   "descprod" => "",
+//   "imgprod" => "",
+// ];
+
+
 //função anti-hacker
-function test_input($data)
-{
+function test_input($data){
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
@@ -24,8 +22,8 @@ function test_input($data)
 }
 
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//validação 1
+if (isset($_POST['enviarProd'])) {
   //nomeprod
   if (empty($_POST["nomeprod"])) {
     $nomeprodErr = "Nome é obrigatório";
