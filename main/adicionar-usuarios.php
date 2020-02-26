@@ -10,7 +10,7 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     $cadastro = file_get_contents("../json/cadastro.json");
     $temp = json_decode($cadastro, true);
 
-    //verificar se o email ja existe
+    //verificar se o email ja existe]
 
     $user = [
         'id' => microtime(true)*1000000,

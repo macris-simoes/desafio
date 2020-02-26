@@ -6,24 +6,33 @@ require ('validar-add-user.php');
 $cadastro = file_get_contents("../json/cadastro.json");
 $tempeditar = json_decode($cadastro, true);
 
-
-if (isset($_GET['id'])) {
-
-    $idGET = array_search($_GET['id'], array_column($tempeditar, "id"));
-}
-
 //excluir
 if (isset($_POST['excluir'])) {
     $posexcluir = array_search($_POST['id'], array_column($tempeditar, "id"));
+    
+    print_r($tempeditar[$posexcluir]);
     unset($tempeditar[$posexcluir]);
-    $inserirUserJson = json_encode($tempeditar, JSON_PRETTY_PRINT);
+    
+    foreach($tempeditar as $t){
+    $tempeditada[]=$t;}
+
+    $inserirUserJson = json_encode($tempeditada, JSON_PRETTY_PRINT);
+    
+    // print_r($tempeditada);
+    // exit();
     file_put_contents("../json/cadastro.json", $inserirUserJson);
-    header('location:editar-usuarios.php');
+    // header('location:editar-usuarios.php');
 };
 //fim excluir
 
 
 //editar
+
+
+if (isset($_GET['id'])) {
+    $idGET = array_search($_GET['id'], array_column($tempeditar, "id"));    
+}
+
 if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     $poseditar = array_search($_GET['id'], array_column($tempeditar, "id"));
 

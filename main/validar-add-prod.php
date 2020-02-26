@@ -50,19 +50,17 @@ if (isset($_POST['enviarProd'])) {
   if(empty($_FILES['imgprod']['name'])){
     $imgprodErr = "Imagem é obrigatória";
   } else{
-    $imgprod = $_FILES['imgprod'];
     $caminho = $_FILES['imgprod']['tmp_name'];
-
-    $img_content = file_get_contents($caminho);
-    $imgSrc = "../img/".$_SESSION['user']['produtos']['idprod'].".jpg";
-    file_put_contents($imgSrc,$img_content);
     
+    $img_content = file_get_contents($caminho);
+    
+    $imgSrc = $_SESSION['user']['produtos']['idprod'];
+    $imgprod = $imgSrc;
+    
+    // exit();
+    file_put_contents($imgprod,$img_content);
 
 
-
-
-
-    // header('location:../includes/imgPost.php');
   };
     //fim img
   } //fim da validação

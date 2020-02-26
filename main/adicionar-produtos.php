@@ -23,7 +23,7 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
         $inserirProdJson = json_encode($tempProd, JSON_PRETTY_PRINT);
         file_put_contents("../json/produtos.json", $inserirProdJson);
 
-        $_SESSION['produtos'] = $prod;
+        $_SESSION['user']['produtos'] = $prod;
         unset($_POST['enviarProd']);
     }
 } else {

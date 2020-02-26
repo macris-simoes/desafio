@@ -12,17 +12,16 @@ $_SESSION['user'] = $tempSession[$nomeLogin];
 
 //produtos
 $produto = file_get_contents("../json/produtos.json");
-$tempProd = json_decode($produto,true);
+$tempProd = json_decode($produto, true);
 
-$produtosDoId=[];
-for($i=0; $i<count($tempProd);$i++){
-    if($_SESSION['user']['id'] == $tempProd[$i]['id']){
-   array_push ($produtosDoId,$tempProd[$i]);
-}
+$produtosDoId = [];
+if (!empty($tempProd)) {
+    for ($i = 0; $i < count($tempProd); $i++) {
+        if ($_SESSION['user']['id'] == $tempProd[$i]['id']) {
+            array_push($produtosDoId, $tempProd[$i]);
+        }
+    }
 }
 
 $_SESSION['user']['produtos'] = $produtosDoId;
 //CARAIIIII TIPSY
-?>
-
-

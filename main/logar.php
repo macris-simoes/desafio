@@ -2,8 +2,12 @@
 session_start();
 require 'validar-add-user.php';
 
+print_r($_POST);
+print_r($_SESSION);
+
 $cadastro = file_get_contents("../json/cadastro.json");
 $templogar = json_decode($cadastro, true);
+
 
 
 //Se o POST foi enviado
