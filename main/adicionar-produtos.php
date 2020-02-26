@@ -1,8 +1,5 @@
 <?php
 session_start();
-print_r($_SESSION);
-
-
 
 require ('validar-add-prod.php');
 
@@ -16,7 +13,7 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])){
     
     $prod = [
         "id" => $_SESSION['user']['id'],
-        "idprod" => microtime(false),
+        "idprod" => microtime(true)*100000,
         "nomeprod" => $nomeprod,
         "precoprod" => $precoprod,
         "descprod" => $descprod,
@@ -26,12 +23,13 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])){
     $inserirProdJson = json_encode($tempProd,JSON_PRETTY_PRINT);
     file_put_contents("../json/produtos.json", $inserirProdJson);
 
+    $_SESSION ['produtos'] = $prod;
     unset($_POST['enviarProd']);
-    } 
+} 
     
 } else{ echo "carai tipsy";}
 
-print_r($_POST);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -1,14 +1,10 @@
 <?php
 session_start();
-print_r($_SESSION);
-
-
 
 require ('validar-add-user.php');
 
 $cadastro = file_get_contents("../json/cadastro.json");
 $tempeditar = json_decode($cadastro, true);
-
 
 
 if (isset($_GET['id'])) {
@@ -55,12 +51,12 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     <?php require('../includes/navbar.php'); ?>
 
     <!-- início class container - div mãe de todas -->
-    <div class="container">
+    <div class="container mt-3">
         <!-- início da div row -->
         <div class="row">
             <!-- início da div do box lateral esquerda -->
-            <div class=" flex-row border rounded  col-4 ">
-                <h3 class="border-bottom">Editar usuários</h3>
+            <div class=" flex-row border rounded col-4 ">
+                <h3 class="border-bottom m-2">Editar usuários</h3>
                 <!-- início da lista do box lateral  -->
 
                 <ul class=" list-group list-group-flush ">
@@ -68,7 +64,6 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
                         <li class="list-group-item d-flex ">
                             <div class="text-wrap col-md-8">
                                 <?php
-                                // tem que por foreach aqui, carai tipsy
                                 echo ($P['nome'] . "<br>");
                                 echo ($P['email'] . "<br>");
                                 ?>

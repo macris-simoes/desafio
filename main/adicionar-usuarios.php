@@ -1,7 +1,5 @@
 <?php
 session_start();
-print_r($_SESSION);
-// print_r($_POST);
 
 require ('validar-add-user.php');
 
@@ -14,7 +12,6 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
 
     //verificar se o email ja existe
 
-
     $user = [
         'id' => microtime(true)*1000000,
         'nome' => $nome,
@@ -26,15 +23,10 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
     $inserirUserJson = json_encode($temp, JSON_PRETTY_PRINT);
     file_put_contents("../json/cadastro.json", $inserirUserJson);
     
-    require ('../includes/userSession.php');
-    header ('location: home.php');
-    
-    }
-   
+    header('location:logar.php');    
+    }   
 } else {
     echo ":(";
-
-
 ?>
 <?php }; 
 
@@ -54,7 +46,7 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
         <!-- início div box da direita -->
         <div class="flex-row rounded mt-2">
             <h1 class="py-3">Cadastrar Usuário</h1>
-            <form method="POST">
+            <form  method="POST">
 
                 <div class="invisible">
                     <input type="text" name="id">
@@ -62,23 +54,23 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
                 <div class="form-group">
                     <label for="formGroupExampleInput1">Nome do usuário</label>
                     <span class="small error text-danger">* <?php echo $nomeErr; ?></span>
-                    <input type="text" class="form-control" id="formGroupExampleInput1" name="nome" placeholder="Inserir nome (apenas letras e espaços)" require>
+                    <input type="text" class="form-control" name="nome" placeholder="Inserir nome (apenas letras e espaços)" require>
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">E-mail</label>
                     <span class="small error text-danger">* <?php echo $emailErr; ?></span>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Inserir e-mail válido" require name="email">
+                    <input type="text" class="form-control"  placeholder="Inserir e-mail válido" require name="email">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput3">Senha</label>
 
                     <span class="small error text-danger">* <?php echo $senhaErr; ?></span>
-                    <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="ATENÇÃO: Senha com 4 a 6 números apenas" name="senha">
+                    <input type="password" class="form-control"  placeholder="ATENÇÃO: Senha com 4 a 6 números apenas" name="senha">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput4">Confirmar senha</label>
                     <span class="small error text-danger">* <?php echo $confsenhaErr; ?></span>
-                    <input type="password" class="form-control" id="formGroupExampleInput4" placeholder="Confirmar senha" name="confsenha">
+                    <input type="password" class="form-control" placeholder="Confirmar senha" name="confsenha">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-sm btn-block btn-outline-danger" name="enviar"> Enviar </button>
@@ -92,22 +84,3 @@ if ((count($userErr) == 0) && isset($_POST['enviar'])) {
 </body>
 
 </html>
-
-
-<!-- if (!empty($nomeprod && $precoprod)) {
-  $prod = [
-    "idprod" => count($tempProd)+1,
-    "nomeprod" => $nomeprod,
-    "precoprod" => $precoprod,
-    "descprod" => $descprod,
-    "imgprod" => $imgprod,
-  ];
-
-  $produtos = file_get_contents("../json/produtos.json");
-  $tempProd = json_decode($produtos, true);
-  $tempProd[] = $prod;
-  $inserirProdJson = json_encode($tempProd, JSON_PRETTY_PRINT);
-  file_put_contents("../json/produtos.json", $inserirProdJson);
-
-  
-}; -->
