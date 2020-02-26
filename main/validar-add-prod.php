@@ -52,16 +52,16 @@ if (isset($_POST['enviarProd'])) {
     $imgprodErr = "Imagem é obrigatória";
   } else {
 
-    if (empty($_SESSION['user']['produtos']['idprod'])) {
-      $imgprod = '../img/' . $_SESSION['user']['id'].'.jpg';
+    if (empty($_SESSION['user']['produtos'])) {
+      $imgprod = '../img/' . $_SESSION['user']['id'] . '.jpg';
     } else {
       $imgprod = '../img/' . $_SESSION['user']['produtos']['idprod'] . '.jpg';
-      $caminho = $_FILES['imgprod']['tmp_name'];
-
-      $img_content = file_get_contents($caminho);
-      $imgtemp =  $_FILES['imgprod'];
-      $imgSrc = $imgprod;
-      file_put_contents($imgSrc, $img_content);
     };
+    $caminho = $_FILES['imgprod']['tmp_name'];
+
+    $img_content = file_get_contents($caminho);
+    $imgtemp =  $_FILES['imgprod'];
+    $imgSrc = $imgprod;
+    file_put_contents($imgSrc, $img_content);
   };  //fim img
 } //fim da validação

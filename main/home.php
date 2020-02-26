@@ -4,11 +4,15 @@ require '../includes/userSession.php';
 
 print_r($_SESSION);
 
-
-
 $produtos = file_get_contents("../json/produtos.json");
 $tempListProd = json_decode($produtos, true);
 
+//excluir
+if(isset($_POST['excluirProd'])){
+    echo "ok";
+}else{
+    echo "not ok";
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,8 +50,13 @@ $tempListProd = json_decode($produtos, true);
                                 <td> <?php echo ($prod['descprod']); ?></td>
                                 <td> <?php echo ($prod['precoprod']); ?></td>
                                 <td>
-                                    <a href="editar-produtos.php" class="button btn btn-danger text-light">editar</a>
-                                    <a class="button btn btn-warning text-light">excluir</a>
+                                    <form method="post">
+
+                                        <a href="editar-produtos.php?id=<?php echo $prod['idprod']; ?>" class="button btn btn-danger text-light">editar</a>
+
+                                        <input hidden value="<?php echo $prod['idprod']; ?>" name="id">
+                                        <button name="excluirProd" class="btn btn-warning btn-small mb-auto"> excluir </button>
+                                    </form>
                                 </td>
                 </tr>
             <?php } } ?>
