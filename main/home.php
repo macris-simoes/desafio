@@ -2,6 +2,8 @@
 session_start();
 require '../includes/userSession.php';
 
+print_r($_SESSION);
+
 
 
 $produtos = file_get_contents("../json/produtos.json");

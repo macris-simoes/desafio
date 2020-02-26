@@ -1,33 +1,34 @@
 <?php
 session_start();
 
-require ('validar-add-prod.php');
+require('validar-add-prod.php');
 
-if ((count($prodErr) == 0) && isset($_POST['enviarProd'])){
+if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
 
-    if(!empty($_POST['nomeprod'])){
+    if (!empty($_POST['nomeprod']) && !empty($_POST['precoprod']) && !empty($_FILES['imgprod'])) {
 
-    
-    $produto = file_get_contents("../json/produtos.json");
-    $tempProd = json_decode($produto,true);
-    
-    $prod = [
-        "id" => $_SESSION['user']['id'],
-        "idprod" => microtime(true)*100000,
-        "nomeprod" => $nomeprod,
-        "precoprod" => $precoprod,
-        "descprod" => $descprod,
-        "imgprod" => $imgprod,
-      ];
-    $tempProd[] = $prod;
-    $inserirProdJson = json_encode($tempProd,JSON_PRETTY_PRINT);
-    file_put_contents("../json/produtos.json", $inserirProdJson);
 
-    $_SESSION ['produtos'] = $prod;
-    unset($_POST['enviarProd']);
-} 
-    
-} else{ echo "carai tipsy";}
+        $produto = file_get_contents("../json/produtos.json");
+        $tempProd = json_decode($produto, true);
+
+        $prod = [
+            "id" => $_SESSION['user']['id'],
+            "idprod" => microtime(true) * 100000,
+            "nomeprod" => $nomeprod,
+            "precoprod" => $precoprod,
+            "descprod" => $descprod,
+            "imgprod" => $imgprod,
+        ];
+        $tempProd[] = $prod;
+        $inserirProdJson = json_encode($tempProd, JSON_PRETTY_PRINT);
+        file_put_contents("../json/produtos.json", $inserirProdJson);
+
+        $_SESSION['produtos'] = $prod;
+        unset($_POST['enviarProd']);
+    }
+} else {
+    echo "carai tipsy";
+}
 
 
 ?>
@@ -42,7 +43,7 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])){
     <!-- início divona -->
     <div class="container mt-2">
         <h3>Adicionar produto</h3>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="invisible">
                 <input type="text" name="idprod">
             </div>
@@ -62,14 +63,25 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])){
                 <label for="exampleFormControlTextarea1">Descrição</label>
                 <textarea class="form-control" rows="3" name="descprod"></textarea>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Adicionar imagem </label>
-                <input type="file" class="form-control-file" name="imgprod">
-            </div <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-block btn-outline-danger" name="enviarProd"> Enviar </button>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="imgprod">
+                    <label class="custom-file-label" for="inputGroupFile04">Escolher arquivo</label>
+                </div>
+            </div>
+            <span class="small error text-danger">* <?php echo $imgprodErr; ?></span>
+            <button type="submit" class="btn btn-sm btn-block btn-outline-danger mt-1" name="enviarProd"> Enviar </button>
         </form>
         <!-- fim divona -->
     </div>
+
+    <?php
+    echo ('<pre>');
+    print_r($_POST);
+    print_r($_SESSION);
+    print_r($_FILES);
+    echo ('</pre>');
+    ?>
 
 </body>
 

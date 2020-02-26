@@ -30,7 +30,7 @@ print_r($_SESSION);
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div>
-            <img src="../img/imagem1.jpg" class="img-fluid" alt="imagem1.jpg">
+            <img src="../img/1.jpg" class="img-fluid" alt="imagem">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Adicionar imagem </label>
