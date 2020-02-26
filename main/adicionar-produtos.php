@@ -13,7 +13,7 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
 
         $prod = [
             "id" => $_SESSION['user']['id'],
-            "idprod" => microtime(true) * 100000,
+            "idprod" => microtime(true) * 1000000,
             "nomeprod" => $nomeprod,
             "precoprod" => $precoprod,
             "descprod" => $descprod,

@@ -7,7 +7,8 @@ $prodErr = [];
 
 
 //função anti-hacker
-function test_input($data){
+function test_input($data)
+{
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
@@ -24,7 +25,7 @@ if (isset($_POST['enviarProd'])) {
     $nomeprod = test_input($_POST['nomeprod']);
     if (!preg_match("/^[a-zA-Z0-9 ]+$/", $nomeprod)) {
       $nomeprodErr = "não utilizar caracteres especais";
-      array_push($prodErr,1);
+      array_push($prodErr, 1);
     } else {
       $nomeprod = $_POST['nomeprod'];
     };
@@ -47,26 +48,20 @@ if (isset($_POST['enviarProd'])) {
 
   //img
 
-  if(empty($_FILES['imgprod']['name'])){
+  if (empty($_FILES['imgprod']['name'])) {
     $imgprodErr = "Imagem é obrigatória";
-  } else{
-    $caminho = $_FILES['imgprod']['tmp_name'];
-    
-    $img_content = file_get_contents($caminho);
-    
-    $imgSrc = $_SESSION['user']['produtos']['idprod'];
-    $imgprod = $imgSrc;
-    
-    // exit();
-    file_put_contents($imgprod,$img_content);
+  } else {
 
+    if (empty($_SESSION['user']['produtos']['idprod'])) {
+      $imgprod = '../img/' . $_SESSION['user']['id'].'.jpg';
+    } else {
+      $imgprod = '../img/' . $_SESSION['user']['produtos']['idprod'] . '.jpg';
+      $caminho = $_FILES['imgprod']['tmp_name'];
 
-  };
-    //fim img
-  } //fim da validação
-
-
-
-
-
-?>
+      $img_content = file_get_contents($caminho);
+      $imgtemp =  $_FILES['imgprod'];
+      $imgSrc = $imgprod;
+      file_put_contents($imgSrc, $img_content);
+    };
+  };  //fim img
+} //fim da validação
