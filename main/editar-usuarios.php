@@ -1,7 +1,8 @@
 <?php
 session_start();
-
 require ('validar-add-user.php');
+
+// print_r($_SESSION);
 
 $cadastro = file_get_contents("../json/cadastro.json");
 $tempeditar = json_decode($cadastro, true);
@@ -10,12 +11,12 @@ $tempeditar = json_decode($cadastro, true);
 if (isset($_POST['excluir'])) {
     $posexcluir = array_search($_POST['id'], array_column($tempeditar, "id"));
     
-    print_r($tempeditar[$posexcluir]);
+    // print_r($tempeditar[$posexcluir]);
     unset($tempeditar[$posexcluir]);
     
     foreach($tempeditar as $t){
-    $tempeditada[]=$t;}
-
+        $tempeditada[]=$t;}
+        
     $inserirUserJson = json_encode($tempeditada, JSON_PRETTY_PRINT);
     
     // print_r($tempeditada);

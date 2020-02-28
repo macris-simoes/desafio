@@ -43,7 +43,7 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
     <!-- início divona -->
     <div class="container mt-2">
         <h3>Adicionar produto</h3>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" id="addprod">
             <div class="invisible">
                 <input type="text" name="idprod">
             </div>
@@ -61,11 +61,12 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descrição</label>
-                <textarea class="form-control" rows="3" name="descprod"></textarea>
+                <textarea class="form-control" form="addprod" rows="3" " name="descprod"></textarea>
+                
             </div>
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="imgprod">
+                    <input type="file" class="custom-file-input" name="imgprod">
                     <label class="custom-file-label" for="inputGroupFile04">Escolher arquivo</label>
                 </div>
             </div>

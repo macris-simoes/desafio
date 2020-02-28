@@ -46,6 +46,14 @@ if (isset($_POST['enviarProd'])) {
   };
   //fim preço
 
+  //descrição
+if (empty($_POST['descprod'])){
+  //sem problemas, não acontece nada, não é obrigatório preencher
+}else{
+  $descprod = $_POST['descprod'];
+}
+  //fim descrição
+
   //img
 
   if (empty($_FILES['imgprod']['name'])) {

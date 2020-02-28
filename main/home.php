@@ -9,9 +9,22 @@ $tempListProd = json_decode($produtos, true);
 
 //excluir
 if(isset($_POST['excluirProd'])){
-    echo "ok";
+    $posexcluir = array_search($_POST['idprod'], array_column($tempListProd,"idprod"));
+    // print_r($posexcluir);
+
+
+//PAREI AQUI, TESTAR SE VAI FUNCIONAR, PORQUE TA APAGANDO TUDO DOS GATO TUDO CARAI
+    unset($tempListProd['id'][$posexcluir]);
+
+    foreach($tempListProd as $prodtemp){
+        $tempeditada[] = $prodeditado;
+    }
+
+    $inserirProdJson = json_encode($tempeditada,JSON_PRETTY_PRINT);
+    file_put_contents("../json/produtos.json",$inserirProdJson);
+    header ('location:home.php');
 }else{
-    echo "not ok";
+    echo ":/";
 }
 ?>
 
@@ -20,6 +33,7 @@ if(isset($_POST['excluirProd'])){
 <?php require('../includes/head.php'); ?>
 
 <body>
+
     <?php require('../includes/navbar.php'); ?>
 
     <!-- início divona -->
@@ -54,7 +68,7 @@ if(isset($_POST['excluirProd'])){
 
                                         <a href="editar-produtos.php?id=<?php echo $prod['idprod']; ?>" class="button btn btn-danger text-light">editar</a>
 
-                                        <input hidden value="<?php echo $prod['idprod']; ?>" name="id">
+                                        <input hidden value="<?php echo $prod['idprod']; ?>" name="idprod">
                                         <button name="excluirProd" class="btn btn-warning btn-small mb-auto"> excluir </button>
                                     </form>
                                 </td>
