@@ -2,29 +2,30 @@
 session_start();
 require '../includes/userSession.php';
 
-print_r($_SESSION);
+// print_r($_POST);
+
 
 $produtos = file_get_contents("../json/produtos.json");
 $tempListProd = json_decode($produtos, true);
 
 //excluir
 if(isset($_POST['excluirProd'])){
-    $posexcluir = array_search($_POST['idprod'], array_column($tempListProd,"idprod"));
+    
+    
+    $posexcluir = array_search($_POST['prod'], array_column($tempListProd,"idprod"));
     // print_r($posexcluir);
-
-
-//PAREI AQUI, TESTAR SE VAI FUNCIONAR, PORQUE TA APAGANDO TUDO DOS GATO TUDO CARAI
-    unset($tempListProd['id'][$posexcluir]);
-
+    
+    unset($tempListProd[$posexcluir]);    
+    //PAREI AQUI, TESTAR SE VAI FUNCIONAR, PORQUE TA APAGANDO TUDO DOS GATO TUDO CARAI
+    
+    // print_r($tempListProd);
+    // exit();
     foreach($tempListProd as $prodtemp){
-        $tempeditada[] = $prodeditado;
-    }
-
+       $tempeditada[] = $prodtemp;
+    }   
     $inserirProdJson = json_encode($tempeditada,JSON_PRETTY_PRINT);
     file_put_contents("../json/produtos.json",$inserirProdJson);
     header ('location:home.php');
-}else{
-    echo ":/";
 }
 ?>
 
@@ -55,6 +56,7 @@ if(isset($_POST['excluirProd'])){
                     echo ("Você ainda não tem produtos cadastrados"); }else{ ?>
                 <tr>
                     <?php foreach ($_SESSION['user']['produtos'] as $prod) {
+                        
                         $posicao = array_search($prod,$_SESSION['user']['produtos'])+1;?>
                                 <th scope="row"> <?php echo $posicao; ?></td>
                                 <td><?php echo ($prod['nomeprod']); ?></td>
@@ -66,9 +68,9 @@ if(isset($_POST['excluirProd'])){
                                 <td>
                                     <form method="post">
 
-                                        <a href="editar-produtos.php?id=<?php echo $prod['idprod']; ?>" class="button btn btn-danger text-light">editar</a>
-
-                                        <input hidden value="<?php echo $prod['idprod']; ?>" name="idprod">
+                                        <a href="editar-produtos.php?id=<?php echo $prod['idprod']; ?>" class="button btn btn-danger text-light">editar</a>                                        
+                                       
+                                        <input hidden value="<?php echo $prod['idprod']; ?>" name="prod">
                                         <button name="excluirProd" class="btn btn-warning btn-small mb-auto"> excluir </button>
                                     </form>
                                 </td>
