@@ -1,6 +1,12 @@
-<?php 
+<?php
 session_start();
 //print_r($_SESSION);
+
+require('validar-add-prod.php');
+
+// if(isset($_GET{'idprod'}))
+
+
 
 
 ?>
@@ -9,34 +15,33 @@ session_start();
 <?php require('../includes/head.php'); ?>
 
 <body>
-   <?php require('../includes/navbar.php'); ?>
-   
-<!-- início divona -->
-<div class="container mt-2">
+    <?php require('../includes/navbar.php'); ?>
+
+    <!-- início divona -->
+    <div class="container mt-2">
         <h3>Editar produto</h3>
-        <form>
+        <form enctype="multipart/form-data" id="editprod">
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="nome">Nome</label>
-                    <input type="text" class=form-control id="nome">
+                    <input type="text" class=form-control name="nomeprod" value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['nomeprod'];} ?>">
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="nome">Preço</label>
-                    <input type="text" class=form-control id="preco">
+                    <input type="text" class=form-control name="precoprod" value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['precoprod'];} ?>">
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Descrição</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label>Descrição</label>
+                <textarea class="form-control" form="editprod" rows="3" value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['descprod'];} ?>"></textarea>
             </div>
             <div>
-            <img src="../img/1.jpg" class="img-fluid" alt="imagem">
+                <img src="value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['imgprod'];} ?>"" class="img-fluid" alt="imagem">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Adicionar imagem </label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div
-            <div class="form-group">
+            </div <div class="form-group">
             <button type="button" class="btn btn-sm btn-block btn-outline-danger"> Enviar </button>
         </form>
 
@@ -44,8 +49,9 @@ session_start();
 
 
 
-    <!-- fim divona -->
+        <!-- fim divona -->
     </div>
 
 </body>
+
 </html>

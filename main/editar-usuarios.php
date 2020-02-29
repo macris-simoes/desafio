@@ -28,8 +28,6 @@ if (isset($_POST['excluir'])) {
 
 
 //editar
-
-
 if (isset($_GET['id'])) {
     $idGET = array_search($_GET['id'], array_column($tempeditar, "id"));    
 }
