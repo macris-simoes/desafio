@@ -1,13 +1,13 @@
 <?php
 session_start();
-//print_r($_SESSION);
-
+// print_r($_SESSION);
 require('validar-add-prod.php');
 
-// if(isset($_GET{'idprod'}))
+$produtos = file_get_contents("../json/produtos.json");
+$tempeditar = json_decode($produtos, true);
 
-
-
+if(isset($_GET['idprod'])){
+    $idprodGET = array_search($_GET['idprod'], array_column($tempeditar,"idprod"));
 
 ?>
 <!DOCTYPE html>
@@ -33,10 +33,10 @@ require('validar-add-prod.php');
             </div>
             <div class="form-group">
                 <label>Descrição</label>
-                <textarea class="form-control" form="editprod" rows="3" value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['descprod'];} ?>"></textarea>
+                <textarea name = "descprod" class="form-control" form="editprod" rows="3"><?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['descprod'];} ?></textarea>
             </div>
             <div>
-                <img src="value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['imgprod'];} ?>"" class="img-fluid" alt="imagem">
+                <img name="imgprod" src="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['imgprod'];} ?>" class="img-fluid" width="50%" alt="imagem">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Adicionar imagem </label>
@@ -52,6 +52,10 @@ require('validar-add-prod.php');
         <!-- fim divona -->
     </div>
 
+<?php }else{
+        echo "Acho que você não deveria estar aqui, num deu tempo de mexer no navbar, volta lá e clica em editar, bebê, beijos";
+    }
+?>
 </body>
 
 </html>

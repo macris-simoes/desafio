@@ -68,7 +68,7 @@ if(isset($_POST['excluirProd'])){
                                 <td>
                                     <form method="post">
 
-                                        <a href="editar-produtos.php?id=<?php echo $prod['idprod']; ?>" class="button btn btn-danger text-light">editar</a>                                        
+                                        <a href="editar-produtos.php?idprod=<?php echo $prod['idprod']; ?>" class="button btn btn-danger text-light">editar</a>                                        
                                        
                                         <input hidden value="<?php echo $prod['idprod']; ?>" name="prod">
                                         <button name="excluirProd" class="btn btn-warning btn-small mb-auto"> excluir </button>

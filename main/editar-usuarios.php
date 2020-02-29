@@ -1,7 +1,6 @@
 <?php
 session_start();
 require ('validar-add-user.php');
-
 // print_r($_SESSION);
 
 $cadastro = file_get_contents("../json/cadastro.json");
