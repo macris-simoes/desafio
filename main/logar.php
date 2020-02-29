@@ -69,6 +69,8 @@ if (isset($_POST["enviar"])) {
          </div>
       </form>
    </div>
+<?php
+include('../includes/script.php');
+?>
 </body>
-
 </html>

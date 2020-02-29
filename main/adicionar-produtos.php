@@ -64,8 +64,8 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
             </div>
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="imgprod">
-                    <label class="custom-file-label" for="inputGroupFile04">Escolher arquivo</label>
+                    <input type="file"  class="form-control-file custom-file-input" id="inputGroupFile04" name="imgprod">
+                    <label class="custom-file-label" for="inputGroupFile04"></label>
                 </div>
             </div>
             <span class="small error text-danger">* <?php echo $imgprodErr; ?></span>

@@ -20,29 +20,28 @@ if(isset($_GET['idprod'])){
     <!-- início divona -->
     <div class="container mt-2">
         <h3>Editar produto</h3>
-        <form enctype="multipart/form-data" id="editprod">
-            <div class="form-row">
-                <div class="form-group col-md-6 col-sm-12">
+        <form enctype="multipart/form-data" method="post" id="editprod">
+            <div class="form-row ">
+                <div class="flex-row col-md-8">
                     <label for="nome">Nome</label>
                     <input type="text" class=form-control name="nomeprod" value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['nomeprod'];} ?>">
-                </div>
-                <div class="form-group col-md-6 col-sm-12">
+                
                     <label for="nome">Preço</label>
                     <input type="text" class=form-control name="precoprod" value="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['precoprod'];} ?>">
+                
+                    <label>Descrição</label>
+                    <textarea name = "descprod" class="form-control" form="editprod" rows="2"><?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['descprod'];} ?></textarea>
                 </div>
+                              
+                <div class=" flex-row col-4 text-center">
+                    <div>
+                    <label for="imgprod">Imagem anterior</label>
+                    </div>
+                    <img class="col-12 mb-2" name="imgprod" id="imgprod" src="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['imgprod'];} ?>" class="img-fluid" alt="imagem">
+                </div>
+                
             </div>
-            <div class="form-group">
-                <label>Descrição</label>
-                <textarea name = "descprod" class="form-control" form="editprod" rows="3"><?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['descprod'];} ?></textarea>
-            </div>
-            <div>
-                <img name="imgprod" src="<?php if (isset($_GET['idprod'])) {echo $tempeditar[$idprodGET]['imgprod'];} ?>" class="img-fluid" width="50%" alt="imagem">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Adicionar imagem </label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div <div class="form-group">
-            <button type="button" class="btn btn-sm btn-block btn-outline-danger"> Enviar </button>
+            <button type="submit" class="mt-3 btn btn-sm btn-block btn-outline-danger" name="enviarProd"> Enviar </button>
         </form>
 
 

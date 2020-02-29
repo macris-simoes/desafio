@@ -60,9 +60,6 @@ if(isset($_POST['excluirProd'])){
                         $posicao = array_search($prod,$_SESSION['user']['produtos'])+1;?>
                                 <th scope="row"> <?php echo $posicao; ?></td>
                                 <td><?php echo ($prod['nomeprod']); ?></td>
-
-                                <!-- //criar um popup balão com a descrição? -->
-
                                 <td> <?php echo ($prod['descprod']); ?></td>
                                 <td> <?php echo ($prod['precoprod']); ?></td>
                                 <td>
