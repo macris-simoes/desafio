@@ -26,8 +26,6 @@ if ((count($prodErr) == 0) && isset($_POST['enviarProd'])) {
         $_SESSION['user']['produtos'] = $prod;
         unset($_POST['enviarProd']);
     }
-} else {
-    echo "carai tipsy";
 }
 
 

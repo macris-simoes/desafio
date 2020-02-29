@@ -55,7 +55,6 @@ if (empty($_POST['descprod'])){
   //fim descrição
 
   //img
-
   if (empty($_FILES['imgprod']['name'])) {
     $imgprodErr = "Imagem é obrigatória";
   } else {
@@ -65,8 +64,8 @@ if (empty($_POST['descprod'])){
     } else {
       $imgprod = '../img/' . $_SESSION['user']['produtos']['idprod'] . '.jpg';
     };
-    $caminho = $_FILES['imgprod']['tmp_name'];
 
+    $caminho = $_FILES['imgprod']['tmp_name'];
     $img_content = file_get_contents($caminho);
     $imgtemp =  $_FILES['imgprod'];
     $imgSrc = $imgprod;
