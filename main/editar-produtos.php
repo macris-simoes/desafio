@@ -19,7 +19,7 @@ if(isset($_GET['idprod'])){
 
     <!-- início divona -->
     <div class="container mt-2">
-        <h3>Editar produto</h3>
+        <h3>Editar produto - tentei várias paradas, mas não consegui, então deletei. Foi mal :'(</h3>
         <form enctype="multipart/form-data" method="post" id="editprod">
             <div class="form-row ">
                 <div class="flex-row col-md-8">
